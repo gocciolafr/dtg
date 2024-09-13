@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenuto bloccato</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <div class="navbar bg-base-100 fixed">
+        <div class="flex-1">
+            <a class="btn btn-ghost text-xl"><b>Gocciola</b></a>
+        </div>
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn m-1">Social</div>
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <li><a href="https://discord.gg/7j3PjwaF3r">Server Discord</a></li>
+                <li><a href="https://paypal.me/gocciolareal">PayPal</a></li>
+                <li><a href="https://beacons.ai/gocciola">Altro...</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <h1 style="padding-top: 5rem;">Generatore Timestamp Discord</h1>
+    <p>In questa pagina puoi generare un timestamp di Discord. Inserisci la data e via!</p>
+    <div class="join">
+        <input type="datetime-local" placeholder="Inserisci la data..." class="input input-bordered w-full max-w-xs join-item" style="margin: 0;" id="dataOraInput" />
+        <button class="btn btn-primary join-item" style="margin: 0;" onclick="genera()">Genera!</button>
+    </div>
+    
+    <dialog id="erroreModal" class="modal">
+    <div class="modal-box">
+        <h3 class="text-lg font-bold">Errore</h3>
+        <p class="py-4" style="margin: 0;">Il campo della data non può essere vuota!</p>
+        <div class="modal-action">
+        <form method="dialog">
+            <button class="btn btn-neutral">Chiudi</button>
+        </form>
+        </div>
+    </div>
+    </dialog>
+
+    <div class="overflow-x-auto">
+        <table class="table">
+        <thead>
+            <tr>
+            <th></th>
+            <th>Tipo</th>
+            <th>Risultato</th>
+            <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class="hover">
+                <th>1</th>
+                <td>Ora corta</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="oc">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="coc()">Copia negli appunti</button></td>
+            </tr>
+
+            <tr class="hover">
+                <th>2</th>
+                <td>Ora lunga</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="ol">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="col()">Copia negli appunti</button></td>
+            </tr>
+
+            <tr class="hover">
+                <th>3</th>
+                <td>Data corta</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="dc">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="cdc()">Copia negli appunti</button></td>
+            </tr>
+
+            <tr class="hover">
+                <th>4</th>
+                <td>Data lunga</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="dl">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="cdl()">Copia negli appunti</button></td>
+            </tr>
+
+            <tr class="hover">
+                <th>5</th>
+                <td>Data lunga con ora corta</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="dloc">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="cdloc()">Copia negli appunti</button></td>
+            </tr>
+
+            <tr class="hover">
+                <th>6</th>
+                <td>Data lunga con giorno della settimana e ora corta</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="dlgsoc">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="cdlgsoc()">Copia negli appunti</button></td>
+            </tr>
+
+            <tr class="hover">
+                <th>7</th>
+                <td>Relativa</td>
+                <td class="badge badge-neutral" style="margin-top: 1.5rem; margin-left: 1rem;" id="rel">-</td>
+                <td><button class="btn btn-primary" style="margin: 0;" onclick="crel()">Copia negli appunti</button></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <dialog id="copiatoModal" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Copiato!</h3>
+            <p class="py-4" style="margin: 0;">L'elemento è stato copiato negli appunti!</p>
+            <div class="modal-action">
+            <form method="dialog">
+                <button class="btn btn-neutral">Chiudi</button>
+            </form>
+            </div>
+        </div>
+    </dialog>
+</body>
+</html>
